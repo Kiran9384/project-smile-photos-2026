@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Camera, Award, Users, Star, Instagram, Facebook, Twitter, Mail, Phone, MapPin, Menu, X } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import Masonry from 'react-responsive-masonry';
+import useWindowSize from './hooks/useWindowSize';
+const DomeGallery = lazy(() => import('./components/ui/DomeGallery/DomeGallery'));
 
 function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; lightBg?: boolean }) {
   const textColor = lightBg 
@@ -372,31 +374,35 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1769650795970-89690d0f535a?w=1920"
-            alt="Hero background"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+         <DomeGallery
+   fit={0.7}
+  minRadius={600}
+  maxVerticalRotationDeg={6}
+  segments={26}
+  dragDampening={2}
+  grayscale={false}
+  bg={"#111827"}
+/>
+          {/* <div className="absolute inset-0  from-black/70 via-black/50 to-black"></div> */}
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white leading-none">
+        <div className="relative z-10 text-left px-10 w-full">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white text-shadow-lg/30 leading-none">
             Candid Emotion,<br/>Timeless Elegance
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl  font-light leading-relaxed text-shadow-lg/30">
             Premium luxury photography specializing in breathtaking weddings, editorial fashion, high-end commercial brands, and private event coverages.
           </p>
-          <div className="flex gap-6 justify-center flex-wrap">
+          <div className="flex gap-6 justify-left flex-wrap">
             <a
               href="#portfolio"
-              className="bg-[#facc15] text-black px-8 py-4 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center"
+              className="text-shadow-lg bg-[#facc15] text-black px-8 py-4 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center"
             >
               View Portfolio
             </a>
             <a
               href="#contact"
-              className="border-2 border-white text-white px-8 py-4 rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center"
+              className="text-shadow-lg/30 border-2 border-white text-white px-8 py-4 rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center"
             >
               Book a Session
             </a>
@@ -696,8 +702,7 @@ export default function App() {
             </div>
 
             <div className="bg-neutral-50 p-8 rounded-3xl border border-gray-200">
-              <form onS
-              ubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm mb-2 text-gray-600">
                     Your Name
