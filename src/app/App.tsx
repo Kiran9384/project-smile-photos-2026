@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Camera, Award, Users, Star, Instagram, Facebook, Twitter, Mail, Phone, MapPin, Menu, X } from 'lucide-react';
+import { Camera, Award, Users, Star, Instagram, Facebook, Twitter, Mail, Phone, MapPin, Menu, X, PhoneCall } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import Masonry from 'react-responsive-masonry';
 
@@ -237,6 +237,13 @@ export default function App() {
     console.log('Form submitted:', formData);
     alert('Thank you for your message! We will get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
+  };
+
+  const handleChoosePlan = (planName: string, planPrice: string, isWedding: boolean) => {
+    const sessionType = isWedding ? 'wedding' : 'birthday';
+    const message = `Hi Smile Photography! I saw your website and was impressed. I want to book a ${sessionType} photography session. I have selected the ${planName} package (Price: ${planPrice}). Please let me know your availability! Thanks.`;
+    const whatsappUrl = `https://wa.me/916379453688?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -631,7 +638,10 @@ export default function App() {
                   ))}
                 </ul>
 
-                <button className="w-full py-4 rounded-xl font-bold mt-auto transition-all duration-300 bg-black text-white hover:bg-neutral-800">
+                <button
+                  onClick={() => handleChoosePlan(plan.name, plan.price, activePricingFilter === 'wedding')}
+                  className="w-full py-4 rounded-xl font-bold mt-auto transition-all duration-300 bg-black text-white hover:bg-neutral-800"
+                >
                   Choose Plan
                 </button>
               </div>
@@ -657,7 +667,7 @@ export default function App() {
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">Phone</div>
-                    <div className="text-lg text-black font-medium">+1 (555) 123-4567</div>
+                    <div className="text-lg text-black font-medium">+91 6379453688</div>
                   </div>
                 </div>
 
@@ -667,7 +677,7 @@ export default function App() {
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">Email</div>
-                    <div className="text-lg text-black font-medium">hello@luxuryphoto.com</div>
+                    <div className="text-lg text-black font-medium">smilephotography81@gmail.com</div>
                   </div>
                 </div>
 
@@ -677,27 +687,27 @@ export default function App() {
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">Studio Address</div>
-                    <div className="text-lg text-black font-medium">123 Creative Ave, New York, NY 10001</div>
+                    <div className="text-lg text-black font-medium">Kanchipuram, Tamil Nadu</div>
                   </div>
                 </div>
               </div>
 
               <div className="flex gap-4">
-                <a href="#" className="bg-neutral-100 text-black p-4 rounded-xl hover:bg-[#facc15] hover:text-black transition-all duration-300">
+                <a href="https://www.instagram.com/smile_photography_official_?igsh=MW1rY3FvNDJydTNwOA%3D%3D" className="bg-neutral-100 text-black p-4 rounded-xl hover:bg-[#facc15] hover:text-black transition-all duration-300">
                   <Instagram className="w-6 h-6" />
                 </a>
                 <a href="#" className="bg-neutral-100 text-black p-4 rounded-xl hover:bg-[#facc15] hover:text-black transition-all duration-300">
                   <Facebook className="w-6 h-6" />
                 </a>
-                <a href="#" className="bg-neutral-100 text-black p-4 rounded-xl hover:bg-[#facc15] hover:text-black transition-all duration-300">
-                  <Twitter className="w-6 h-6" />
+                <a href="tel:6379453688" className="bg-neutral-100 text-black p-4 rounded-xl hover:bg-[#facc15] hover:text-black transition-all duration-300">
+                  <PhoneCall className="w-6 h-6" />
                 </a>
+                
               </div>
             </div>
 
             <div className="bg-neutral-50 p-8 rounded-3xl border border-gray-200">
-              <form onS
-              ubmit={handleSubmit} className="space-y-6">
+              <form action="https://formsubmit.co/aganeshsha502@gmail.com" method="POST"className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm mb-2 text-gray-600">
                     Your Name
@@ -705,8 +715,23 @@ export default function App() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-[#facc15] transition-colors"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm mb-2 text-gray-600">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="number"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-[#facc15] transition-colors"
                     required
                   />
@@ -719,6 +744,7 @@ export default function App() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-[#facc15] transition-colors"
@@ -732,6 +758,7 @@ export default function App() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={6}
@@ -759,6 +786,22 @@ export default function App() {
           <p className="text-gray-500 text-sm mt-2">&copy; 2026 Smile Photography Studio. All rights reserved.</p>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href={`https://wa.me/916379453688?text=${encodeURIComponent("Hi Smile Photography! I saw your website and was impressed. I would like to inquire about booking a photography session. Please let me know your availability! Thanks.")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
+        aria-label="Chat on WhatsApp"
+      >
+        <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.023-5.102-2.884-6.964C16.587 1.91 14.139.887 11.53.887c-5.444 0-9.866 4.418-9.87 9.865-.001 1.77.464 3.506 1.346 5.045L1.93 21.03l5.378-1.411c.002-.001.002-.001.002-.001zM17.52 14.33c-.302-.15-1.786-.88-2.057-.98-.27-.1-.468-.15-.663.15-.195.3-.757.98-.928 1.18-.17.2-.34.22-.64.07-1.125-.56-1.923-1.024-2.69-2.337-.2-.34-.04-.52.11-.67.14-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.07-.15-.663-1.6-.909-2.193-.24-.58-.5-.5-.663-.51-.17-.01-.366-.01-.561-.01-.195 0-.51.07-.777.36-.266.29-1.02.99-1.02 2.42 0 1.43 1.04 2.81 1.185 3 0 .19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.7.22 1.33.19 1.83.12.56-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.13-.27-.21-.57-.36z"/>
+        </svg>
+        <span className="absolute right-16 bg-white text-black text-xs font-bold px-3 py-2 rounded-xl shadow-lg border border-gray-200 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          Message us on WhatsApp
+        </span>
+      </a>
     </div>
   );
 }
