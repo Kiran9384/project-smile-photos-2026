@@ -4,8 +4,8 @@ import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import Masonry from 'react-responsive-masonry';
 
 function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; lightBg?: boolean }) {
-  const textColor = lightBg 
-    ? 'text-black' 
+  const textColor = lightBg
+    ? 'text-black'
     : (isScrolled ? 'text-black' : 'text-white');
 
   return (
@@ -13,9 +13,9 @@ function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; ligh
       {/* Brand Name Column */}
       <div className="flex flex-col items-start leading-none pr-1">
         <div className="relative h-10 flex items-end">
-          <span 
+          <span
             className="text-4xl md:text-5xl font-normal leading-[0.5] select-none"
-            style={{ 
+            style={{
               fontFamily: "'Herr Von Muellerhoff', 'Alex Brush', cursive",
               letterSpacing: "1px",
               transform: "translateY(-6px)"
@@ -24,7 +24,7 @@ function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; ligh
             Smile
           </span>
         </div>
-        <span 
+        <span
           className="text-[9px] font-bold tracking-[0.22em] uppercase select-none"
           style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
@@ -250,11 +250,10 @@ export default function App() {
     <div className="min-h-screen bg-white text-black">
       {/* Floating Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-gray-200/50 text-black'
             : 'bg-transparent py-6 text-white'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo Holder */}
@@ -266,41 +265,36 @@ export default function App() {
           <nav className="hidden md:flex items-center gap-8 font-semibold">
             <a
               href="#about"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               About
             </a>
             <a
               href="#services"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Services
             </a>
             <a
               href="#portfolio"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Portfolio
             </a>
             <a
               href="#pricing"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Pricing
             </a>
             <a
               href="#contact"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Contact
             </a>
@@ -315,9 +309,8 @@ export default function App() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-xl transition-colors ${
-              isScrolled ? 'hover:bg-gray-100 text-black' : 'hover:bg-white/10 text-white'
-            }`}
+            className={`md:hidden p-2 rounded-xl transition-colors ${isScrolled ? 'hover:bg-gray-100 text-black' : 'hover:bg-white/10 text-white'
+              }`}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -389,7 +382,7 @@ export default function App() {
 
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white leading-none">
-            Candid Emotion,<br/>Timeless Elegance
+            Candid Emotion,<br />Timeless Elegance
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             Premium luxury photography specializing in breathtaking weddings, editorial fashion, high-end commercial brands, and private event coverages.
@@ -501,11 +494,10 @@ export default function App() {
                       setActivePricingFilter('standard');
                     }
                   }}
-                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${
-                    activeFilter === filter
+                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${activeFilter === filter
                       ? 'bg-[#facc15] text-black'
                       : 'bg-black text-white hover:bg-neutral-800'
-                  }`}
+                    }`}
                 >
                   {filter}
                 </button>
@@ -587,17 +579,16 @@ export default function App() {
 
             <div className="flex gap-4 justify-center flex-wrap">
               {[
-                { id: 'standard', label: 'Standard Packages' },
+                { id: 'standard', label: 'Birthday Packages' },
                 { id: 'wedding', label: 'Wedding Packages' }
               ].map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setActivePricingFilter(category.id)}
-                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${
-                    activePricingFilter === category.id
+                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${activePricingFilter === category.id
                       ? 'bg-[#facc15] text-black shadow-sm'
                       : 'bg-black text-white hover:bg-neutral-800'
-                  }`}
+                    }`}
                 >
                   {category.label}
                 </button>
@@ -609,11 +600,10 @@ export default function App() {
             {pricingPlans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative p-8 rounded-3xl transition-all duration-300 flex flex-col ${
-                  plan.recommended
+                className={`relative p-8 rounded-3xl transition-all duration-300 flex flex-col ${plan.recommended
                     ? 'bg-[#facc15] text-black scale-105 shadow-2xl border border-[#facc15]'
                     : 'bg-neutral-50 border border-gray-200 text-black hover:border-black'
-                }`}
+                  }`}
               >
                 {plan.recommended && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-2 rounded-full text-sm font-bold shadow-md">
@@ -630,9 +620,8 @@ export default function App() {
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <Star className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                        plan.recommended ? 'fill-black text-black' : 'fill-[#facc15] text-[#facc15]'
-                      }`} />
+                      <Star className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.recommended ? 'fill-black text-black' : 'fill-[#facc15] text-[#facc15]'
+                        }`} />
                       <span className={plan.recommended ? 'text-black/90' : 'text-gray-700'}>{feature}</span>
                     </li>
                   ))}
