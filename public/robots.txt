@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.smilephotographykanchipuram.com
+
+# Sitemaps
+Sitemap: https://www.smilephotographykanchipuram.com/sitemap.xml
