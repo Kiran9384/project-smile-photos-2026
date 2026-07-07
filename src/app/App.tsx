@@ -102,15 +102,57 @@ export default function App() {
   ];
 
   const portfolioImages = [
-    { id: 1, url: 'https://images.unsplash.com/photo-1769650795970-89690d0f535a?w=600', category: 'fashion', title: 'Elegance Redefined' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1767358536907-f46dffc92492?w=600', category: 'events', title: 'Evening Soirée' },
-    { id: 3, url: 'https://images.unsplash.com/photo-1763454640516-fe10924d1c3c?w=600', category: 'fashion', title: 'Natural Grace' },
-    { id: 4, url: 'https://images.unsplash.com/photo-1762522930348-070b98229e9b?w=600', category: 'fashion', title: 'Bold Expression' },
-    { id: 5, url: 'https://images.unsplash.com/photo-1770062423022-faf4141573e3?w=600', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 6, url: 'https://images.unsplash.com/photo-1776111885208-c7f243c0c9dc?w=600', category: 'fashion', title: 'Movement & Flow' },
-    { id: 7, url: 'https://images.unsplash.com/photo-1768479619271-e0ff666a14f1?w=600', category: 'fashion', title: 'Mystique' },
-    { id: 8, url: 'https://images.unsplash.com/photo-1763677594421-f58e50cce64d?w=600', category: 'fashion', title: 'Dramatic Light' },
-    { id: 9, url: 'https://images.unsplash.com/photo-1768609956943-9eee60a23d59?w=600', category: 'events', title: 'Fire & Passion' }
+    { id: 5, url: '/photos/wedding/A1 (1).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography ', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (2).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (3).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (4).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (5).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (6).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (7).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (8).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (9).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (10).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (11).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (12).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (13).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (14).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (15).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (16).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (2).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (3).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (4).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (5).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (6).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (7).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (8).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (9).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (10).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (11).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (12).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (13).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (14).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (15).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (17).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (18).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (19).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (20).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (21).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (22).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (23).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (24).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 3, url: '/photos/birthday/a1 (7).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 3, url: '/photos/birthday/a1 (6).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 3, url: '/photos/birthday/a1 (1).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 4, url: '/photos/birthday/a1 (8).webp', category: 'birthday', title: 'Bold Expression' },
+    { id: 6, url: '/photos/birthday/a1 (9).webp', category: 'birthday', title: 'Movement & Flow' },
+    { id: 9, url: '/photos/babyshower/s1 (1).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (2).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (4).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (5).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (6).webp', category: 'baby shower', title: 'Fire & Passion' },
+
+    
+
   ];
 
   const testimonials = [
@@ -483,7 +525,7 @@ export default function App() {
             </p>
 
             <div className="flex gap-4 justify-center flex-wrap">
-              {['all', 'weddings', 'fashion', 'events'].map((filter) => (
+              {['all', 'weddings', 'birthday', 'baby shower'].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => {
@@ -516,8 +558,8 @@ export default function App() {
                   alt={image.title}
                   className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <h3 className="text-xl font-bold">{image.title}</h3>
+                <div >
+                  
                 </div>
               </div>
             ))}
