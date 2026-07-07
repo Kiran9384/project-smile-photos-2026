@@ -7,7 +7,7 @@ import path from 'path';
 import { promises as fs } from 'fs';
 import sharp from 'sharp';
 
-const INPUT_ROOT = path.join(process.cwd(), 'public', 'photos');
+const INPUT_ROOT = path.join(process.cwd(), 'public', 'images');
 const OUTPUT_ROOT = path.join(process.cwd(), 'public', 'optimized');
 
 // Supported extensions (lowercase)
