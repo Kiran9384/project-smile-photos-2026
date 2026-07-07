@@ -815,6 +815,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-6 text-center">
           <SmileLogo lightBg={true} />
           <p className="text-gray-500 text-sm mt-2">&copy; 2026 Smile Photography Studio. All rights reserved.</p>
+          <p className="text-gray-500 text-sm mt-2">Created by Kanchipuram Web Solutions.</p>
+          <p className="text-gray-500 text-sm mt-2"> Email : [kanchipuramwebsolutions@gmail.com]</p>
+
+
         </div>
       </footer>
 
