@@ -4,31 +4,37 @@ import { useGesture } from '@use-gesture/react';
 import './DomeGallery.css';
 
 const DEFAULT_IMAGES = [
-  {
-    src: 'https://images.unsplash.com/photo-1755331039789-7e5680e26e8f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Abstract art'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1755569309049-98410b94f66d?q=80&w=772&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Modern sculpture'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1755497595318-7e5e3523854f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Digital artwork'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1755353985163-c2a0fe5ac3d8?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Contemporary art'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1745965976680-d00be7dc0377?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Geometric pattern'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1752588975228-21f44630bb3c?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Textured surface'
-  },
-  { src: 'https://pbs.twimg.com/media/Gyla7NnXMAAXSo_?format=jpg&name=large', alt: 'Social media image' }
+  { id: 5, src: '/optimized/wedding/A2 (1).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography ', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (2).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (3).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (4).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (5).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (11).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (12).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (13).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (5).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (6).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (7).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A2 (8).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (13).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (14).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (15).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (17).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (18).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (19).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (20).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 5, src: '/optimized/wedding/A1 (24).webp', category: 'weddings', title: 'Timeless Beauty' },
+  { id: 3, src: '/optimized/birthday/a1 (7).webp', category: 'birthday', title: 'Natural Grace' },
+  { id: 3, src: '/optimized/birthday/a1 (6).webp', category: 'birthday', title: 'Natural Grace' },
+  { id: 3, src: '/optimized/birthday/a1 (1).webp', category: 'birthday', title: 'Natural Grace' },
+  { id: 4, src: '/optimized/birthday/a1 (8).webp', category: 'birthday', title: 'Bold Expression' },
+  { id: 6, src: '/optimized/birthday/a1 (9).webp', category: 'birthday', title: 'Movement & Flow' },
+  { id: 9, src: '/optimized/babyshower/s1 (1).webp', category: 'baby shower', title: 'Fire & Passion' },
+  { id: 9, src: '/optimized/babyshower/s1 (2).webp', category: 'baby shower', title: 'Fire & Passion' },
+  { id: 9, src: '/optimized/babyshower/s1 (4).webp', category: 'baby shower', title: 'Fire & Passion' },
+  { id: 9, src: '/optimized/babyshower/s1 (5).webp', category: 'baby shower', title: 'Fire & Passion' },
+  { id: 9, src: '/optimized/babyshower/s1 (6).webp', category: 'baby shower', title: 'Fire & Passion' },
+
 ];
 
 const DEFAULTS = {

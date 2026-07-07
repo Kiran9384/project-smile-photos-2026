@@ -1,0 +1,10 @@
+/* src/app/components/ui/ImageOptimized/ImageOptimized.css */
+.image-optimized-wrapper .placeholder {
+  /* placeholder is already styled inline, but we can provide defaults */
+  background-color: #f0f0f0;
+}
+
+.image-optimized-wrapper img.loaded {
+  /* when the high‑res image is loaded, ensure smooth fade‑in */
+  transition: opacity 0.3s ease-out, filter 0.3s ease-out;
+}
