@@ -7,8 +7,8 @@ const DomeGallery = lazy(() => import('./components/ui/DomeGallery/DomeGallery')
 import './styles/animations.css';
 
 function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; lightBg?: boolean }) {
-  const textColor = lightBg 
-    ? 'text-black' 
+  const textColor = lightBg
+    ? 'text-black'
     : (isScrolled ? 'text-black' : 'text-white');
 
   return (
@@ -16,9 +16,9 @@ function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; ligh
       {/* Brand Name Column */}
       <div className="flex flex-col items-start leading-none pr-1">
         <div className="relative h-10 flex items-end">
-          <span 
+          <span
             className="text-4xl md:text-5xl font-normal leading-[0.5] select-none"
-            style={{ 
+            style={{
               fontFamily: "'Herr Von Muellerhoff', 'Alex Brush', cursive",
               letterSpacing: "1px",
               transform: "translateY(-6px)"
@@ -27,7 +27,7 @@ function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; ligh
             Smile
           </span>
         </div>
-        <span 
+        <span
           className="text-[9px] font-bold tracking-[0.22em] uppercase select-none"
           style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
@@ -123,15 +123,57 @@ export default function App() {
   ];
 
   const portfolioImages = [
-    { id: 1, url: 'https://images.unsplash.com/photo-1769650795970-89690d0f535a?w=600', category: 'fashion', title: 'Elegance Redefined' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1767358536907-f46dffc92492?w=600', category: 'events', title: 'Evening Soirée' },
-    { id: 3, url: 'https://images.unsplash.com/photo-1763454640516-fe10924d1c3c?w=600', category: 'fashion', title: 'Natural Grace' },
-    { id: 4, url: 'https://images.unsplash.com/photo-1762522930348-070b98229e9b?w=600', category: 'fashion', title: 'Bold Expression' },
-    { id: 5, url: 'https://images.unsplash.com/photo-1770062423022-faf4141573e3?w=600', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 6, url: 'https://images.unsplash.com/photo-1776111885208-c7f243c0c9dc?w=600', category: 'fashion', title: 'Movement & Flow' },
-    { id: 7, url: 'https://images.unsplash.com/photo-1768479619271-e0ff666a14f1?w=600', category: 'fashion', title: 'Mystique' },
-    { id: 8, url: 'https://images.unsplash.com/photo-1763677594421-f58e50cce64d?w=600', category: 'fashion', title: 'Dramatic Light' },
-    { id: 9, url: 'https://images.unsplash.com/photo-1768609956943-9eee60a23d59?w=600', category: 'events', title: 'Fire & Passion' }
+    { id: 5, url: '/photos/wedding/A1 (1).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography ', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (2).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (3).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (4).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (5).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (6).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (7).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (8).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (9).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (10).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (11).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (12).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (13).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (14).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (15).jpg', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (16).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (2).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (3).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (4).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (5).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (6).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (7).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (8).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (9).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (10).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (11).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (12).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (13).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (14).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (15).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (17).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (18).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (19).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (20).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (21).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (22).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (23).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/photos/wedding/A1 (24).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 3, url: '/photos/birthday/a1 (7).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 3, url: '/photos/birthday/a1 (6).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 3, url: '/photos/birthday/a1 (1).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 4, url: '/photos/birthday/a1 (8).webp', category: 'birthday', title: 'Bold Expression' },
+    { id: 6, url: '/photos/birthday/a1 (9).webp', category: 'birthday', title: 'Movement & Flow' },
+    { id: 9, url: '/photos/babyshower/s1 (1).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (2).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (4).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (5).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/photos/babyshower/s1 (6).webp', category: 'baby shower', title: 'Fire & Passion' },
+
+    
+
   ];
 
   const testimonials = [
@@ -271,11 +313,10 @@ export default function App() {
     <div className="min-h-screen bg-white text-black">
       {/* Floating Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-gray-200/50 text-black'
             : 'bg-transparent py-6 text-white'
-        }`}
+          }`}
       >
         <div className="w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo Holder */}
@@ -287,41 +328,36 @@ export default function App() {
           <nav className="hidden md:flex items-center gap-8 font-semibold">
             <a
               href="#about"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               About
             </a>
             <a
               href="#services"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Services
             </a>
             <a
               href="#portfolio"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Portfolio
             </a>
             <a
               href="#pricing"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Pricing
             </a>
             <a
               href="#contact"
-              className={`transition-colors duration-300 hover:text-[#facc15] ${
-                isScrolled ? 'text-gray-800' : 'text-gray-200'
-              }`}
+              className={`transition-colors duration-300 hover:text-[#facc15] ${isScrolled ? 'text-gray-800' : 'text-gray-200'
+                }`}
             >
               Contact
             </a>
@@ -336,9 +372,8 @@ export default function App() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-xl transition-colors ${
-              isScrolled ? 'hover:bg-gray-100 text-black' : 'hover:bg-white/10 text-white'
-            }`}
+            className={`md:hidden p-2 rounded-xl transition-colors ${isScrolled ? 'hover:bg-gray-100 text-black' : 'hover:bg-white/10 text-white'
+              }`}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -515,7 +550,7 @@ export default function App() {
             </p>
 
             <div className="flex gap-4 justify-center flex-wrap">
-              {['all', 'weddings', 'fashion', 'events'].map((filter) => (
+              {['all', 'weddings', 'birthday', 'baby shower'].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => {
@@ -526,11 +561,10 @@ export default function App() {
                       setActivePricingFilter('standard');
                     }
                   }}
-                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${
-                    activeFilter === filter
+                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${activeFilter === filter
                       ? 'bg-[#facc15] text-black'
                       : 'bg-black text-white hover:bg-neutral-800'
-                  }`}
+                    }`}
                 >
                   {filter}
                 </button>
@@ -549,8 +583,8 @@ export default function App() {
                   alt={image.title}
                   className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <h3 className="text-xl font-bold">{image.title}</h3>
+                <div >
+                  
                 </div>
               </div>
             ))}
@@ -612,17 +646,16 @@ export default function App() {
 
             <div className="flex gap-4 justify-center flex-wrap">
               {[
-                { id: 'standard', label: 'Standard Packages' },
+                { id: 'standard', label: 'Birthday Packages' },
                 { id: 'wedding', label: 'Wedding Packages' }
               ].map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setActivePricingFilter(category.id)}
-                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${
-                    activePricingFilter === category.id
+                  className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${activePricingFilter === category.id
                       ? 'bg-[#facc15] text-black shadow-sm'
                       : 'bg-black text-white hover:bg-neutral-800'
-                  }`}
+                    }`}
                 >
                   {category.label}
                 </button>
@@ -634,11 +667,10 @@ export default function App() {
             {pricingPlans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative p-8 rounded-3xl transition-all duration-300 flex flex-col ${
-                  plan.recommended
+                className={`relative p-8 rounded-3xl transition-all duration-300 flex flex-col ${plan.recommended
                     ? 'bg-[#facc15] text-black scale-105 shadow-2xl border border-[#facc15]'
                     : 'bg-neutral-50 border border-gray-200 text-black hover:border-black'
-                }`}
+                  }`}
               >
                 {plan.recommended && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-2 rounded-full text-sm font-bold shadow-md">
@@ -655,9 +687,8 @@ export default function App() {
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <Star className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                        plan.recommended ? 'fill-black text-black' : 'fill-[#facc15] text-[#facc15]'
-                      }`} />
+                      <Star className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.recommended ? 'fill-black text-black' : 'fill-[#facc15] text-[#facc15]'
+                        }`} />
                       <span className={plan.recommended ? 'text-black/90' : 'text-gray-700'}>{feature}</span>
                     </li>
                   ))}
@@ -732,7 +763,7 @@ export default function App() {
             </div>
 
             <div className="bg-neutral-50 p-8 rounded-3xl border border-gray-200">
-              <form action="https://formsubmit.co/aganeshsha502@gmail.com" method="POST"className="space-y-6">
+              <form action="https://formsubmit.co/smilephotography81@gmail.com" method="POST"className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm mb-2 text-gray-600">
                     Your Name
@@ -809,6 +840,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-6 text-center">
           <SmileLogo lightBg={true} />
           <p className="text-gray-500 text-sm mt-2">&copy; 2026 Smile Photography Studio. All rights reserved.</p>
+          <p className="text-gray-500 text-sm mt-2">Created by Kanchipuram Web Solutions.</p>
+          <p className="text-gray-500 text-sm mt-2"> Email : [kanchipuramwebsolutions@gmail.com]</p>
+
+
         </div>
       </footer>
 
