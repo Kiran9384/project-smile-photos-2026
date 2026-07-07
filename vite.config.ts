@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
+import { exec } from 'child_process';
 
 
 function figmaAssetResolver() {
@@ -23,6 +24,20 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    {
+      name: 'image-optimizer',
+      apply: 'build',
+      async closeBundle() {
+        await new Promise((resolve, reject) => {
+          exec('npm run optimize-images', (error, stdout, stderr) => {
+            console.log(stdout);
+            console.error(stderr);
+            if (error) reject(error);
+            else resolve();
+          });
+        });
+      },
+    },
   ],
   resolve: {
     alias: {
