@@ -738,7 +738,7 @@ export default function App() {
             </div>
 
             <div className="bg-neutral-50 p-8 rounded-3xl border border-gray-200">
-              <form action="https://formsubmit.co/aganeshsha502@gmail.com" method="POST"className="space-y-6">
+              <form action="https://formsubmit.co/smilephotography81@gmail.com" method="POST"className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm mb-2 text-gray-600">
                     Your Name
