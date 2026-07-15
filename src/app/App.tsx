@@ -4,7 +4,6 @@ import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import Masonry,  { ResponsiveMasonry } from 'react-responsive-masonry';
 import useWindowSize from './hooks/useWindowSize';
 const DomeGallery = lazy(() => import('./components/ui/DomeGallery/DomeGallery'));
-import './styles/animations.css';
 import SEO from './components/SEO';
 
 function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; lightBg?: boolean }) {
@@ -73,7 +72,12 @@ export default function App() {
   const [activePricingFilter, setActivePricingFilter] = useState('standard');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+const columns =
+  window.innerWidth >= 1024
+    ? 3
+    : window.innerWidth >= 768
+    ? 2
+    : 1;
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -168,30 +172,29 @@ export default function App() {
 
   ];
 
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Bride',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',
-      rating: 5,
-      text: 'Absolutely stunning work! They captured every moment of our wedding day with such artistry and emotion. We couldn\'t be happier.'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'CEO, TechCorp',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
-      rating: 5,
-      text: 'Professional, creative, and exceptional quality. Our corporate event photos exceeded all expectations.'
-    },
-    {
-      name: 'Emma Rodriguez',
-      role: 'Fashion Designer',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100',
-      rating: 5,
-      text: 'A true artist with the camera. Their fashion photography brought my collection to life in ways I never imagined.'
-    }
-  ];
-
+const testimonials = [
+  {
+    name: "Priya Krishnan",
+    role: "Bride, Chennai",
+    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+    rating: 5,
+    text: "Our wedding memories were captured beautifully. Every photo reflects genuine emotions, and the team made us feel comfortable throughout the event. Highly recommended!"
+  },
+  {
+    name: "Arun Kumar",
+    role: "Founder, Chennai Startup",
+    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+    rating: 5,
+    text: "We hired them for our company launch in Chennai. The photos and event highlights were delivered on time with excellent quality. Truly professional from start to finish."
+  },
+  {
+    name: "Nivetha Raj",
+    role: "Classical Dancer",
+    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+    rating: 5,
+    text: "The team captured every performance with amazing clarity and creativity. The portraits and stage shots were beyond our expectations. We'll definitely work with them again."
+  }
+];
   const standardPlans = [
     {
       name: 'Silver',
@@ -617,7 +620,7 @@ export default function App() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-neutral-50 p-8 rounded-3xl border border-gray-200 hover:border-[#facc15] transition-all duration-300"
+                className="flex flex-col justify-between bg-neutral-50 p-8 rounded-3xl border border-gray-200 hover:border-[#facc15] transition-all duration-300"
               >
                 <div className="flex gap-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
