@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
+
 const SEO = () => (
   <Helmet>
     <title>Smile Photos | Best Photography Studio in Kanchipuram</title>

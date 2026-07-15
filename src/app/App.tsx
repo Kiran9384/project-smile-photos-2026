@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { Camera, Award, Users, Star, Instagram, Facebook, Twitter, Mail, Phone, MapPin, Menu, X, PhoneCall } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
-import Masonry from 'react-responsive-masonry';
+import Masonry,  { ResponsiveMasonry } from 'react-responsive-masonry';
 import useWindowSize from './hooks/useWindowSize';
 const DomeGallery = lazy(() => import('./components/ui/DomeGallery/DomeGallery'));
 import './styles/animations.css';
@@ -440,14 +440,26 @@ export default function App() {
           {/* <div className="absolute inset-0  from-black/70 via-black/50 to-black"></div> */}
         </div>
 
-        <div className="relative z-10 text-left px-25 w-full">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white text-shadow-lg/30 leading-none">
+
+        <div className="relative z-10 text-left px-6 md:px-25 pt-48 md:pt-0 w-full">
+          +       <h1 className="text-3xl sm:text-4xl md:text-8xl font-black mb-4 md:mb-6 tracking-tight text-white text-shadow-lg/30 leading-none">
+            {/* <div className="relative z-10 text-left px-25 w-full">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white text-shadow-lg/30 leading-none"> */}
             Candid Emotion,<br />Timeless Elegance
           </h1>
           {/* <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl  font-light leading-relaxed text-shadow-lg/30">
             Premium luxury photography specializing in breathtaking weddings, editorial fashion, high-end commercial brands, and private event coverages.
           </p> */}
-          <div className="flex gap-6 justify-left flex-wrap">
+          <div className="flex gap-3 md:gap-6 justify-start">
+            +            <a href="#portfolio" className="text-shadow-lg bg-[#facc15] text-black px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+              +              View Portfolio
+              +            </a>
+            +            <a href="#contact" className="text-shadow-lg/30 border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+              +              Book a Session
+              +            </a>
+            +          </div>
+
+          {/* <div className="flex gap-6 justify-left flex-wrap">
             <a
               href="#portfolio"
               className="text-shadow-lg bg-[#facc15] text-black px-8 py-4 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center"
@@ -460,7 +472,9 @@ export default function App() {
             >
               Book a Session
             </a>
-          </div>
+          </div> */}
+
+
         </div>
       </section>
 
@@ -542,7 +556,7 @@ export default function App() {
               Explore our latest work across different photography styles
             </p>
 
-            <div className="flex gap-4 justify-center flex-wrap">
+            <div className="flex gap-4 justify-center flex-wrap" >
               {['all', 'weddings', 'birthday', 'baby shower'].map((filter) => (
                 <button
                   key={filter}
@@ -565,23 +579,27 @@ export default function App() {
             </div>
           </div>
 
-          <Masonry columnsCount={3} gutter="1.5rem">
+          <ResponsiveMasonry columnsCountBreakPoints={{
+  350: 1, //for phone
+  750: 2,  //for tab
+  1000: 3,  //for laptop
+}}>
+          <Masonry columnsCount={3} gutter="1.5rem" >
             {filteredImages.map((image) => (
               <div
-                key={image.id}
-                className="relative group cursor-pointer overflow-hidden rounded-2xl"
-              >
-                <ImageWithFallback
-                  src={image.url}
-                  alt={image.title}
-                  className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
-                />
-                <div >
+                    key={image.id}
+                    className="relative group cursor-pointer overflow-hidden rounded-2xl" >
+                    <ImageWithFallback
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
+                    />
 
-                </div>
-              </div>
+                  </div>
             ))}
+            
           </Masonry>
+          </ResponsiveMasonry>
         </div>
       </section>
 
@@ -833,10 +851,10 @@ export default function App() {
         <div className="max-w-7xl w-auto flex flex-col items-center justify-center gap-6 text-center">
           <SmileLogo lightBg={true} />
           <p className="text-gray-500 text-sm mt-2">&copy; 2026 Smile Photography Studio. All rights reserved.</p>
-          
+
           <div>
             <p className="text-gray-500 text-sm mt-2">Created by Kanchipuram Web Solutions.</p>
-          <p className="text-gray-500 text-sm mt-2"> Email : [kanchipuramwebsolutions@gmail.com]</p>
+            <p className="text-gray-500 text-sm mt-2"> Email : [kanchipuramwebsolutions@gmail.com]</p>
 
           </div>
 
