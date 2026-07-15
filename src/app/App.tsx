@@ -454,13 +454,13 @@ const testimonials = [
             Premium luxury photography specializing in breathtaking weddings, editorial fashion, high-end commercial brands, and private event coverages.
           </p> */}
           <div className="flex gap-3 md:gap-6 justify-start">
-            +            <a href="#portfolio" className="text-shadow-lg bg-[#facc15] text-black px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
-              +              View Portfolio
-              +            </a>
-            +            <a href="#contact" className="text-shadow-lg/30 border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
-              +              Book a Session
-              +            </a>
-            +          </div>
+                        <a href="#portfolio" className="text-shadow-lg bg-[#facc15] text-black px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+                            View Portfolio
+                          </a>
+                        <a href="#contact" className="text-shadow-lg/30 border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+                            Book a Session
+                          </a>
+                      </div>
 
           {/* <div className="flex gap-6 justify-left flex-wrap">
             <a
