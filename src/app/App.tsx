@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { Camera, Award, Users, Star, Instagram, Facebook, Twitter, Mail, Phone, MapPin, Menu, X, PhoneCall } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
-import Masonry,  { ResponsiveMasonry } from 'react-responsive-masonry';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import useWindowSize from './hooks/useWindowSize';
 const DomeGallery = lazy(() => import('./components/ui/DomeGallery/DomeGallery'));
 import SEO from './components/SEO';
@@ -56,12 +56,12 @@ export default function App() {
   const [activePricingFilter, setActivePricingFilter] = useState('standard');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-const columns =
-  window.innerWidth >= 1024
-    ? 3
-    : window.innerWidth >= 768
-    ? 2
-    : 1;
+  const columns =
+    window.innerWidth >= 1024
+      ? 3
+      : window.innerWidth >= 768
+        ? 2
+        : 1;
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -156,29 +156,29 @@ const columns =
 
   ];
 
-const testimonials = [
-  {
-    name: "Priya Krishnan",
-    role: "Bride, Chennai",
-    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
-    rating: 5,
-    text: "Our wedding memories were captured beautifully. Every photo reflects genuine emotions, and the team made us feel comfortable throughout the event. Highly recommended!"
-  },
-  {
-    name: "Arun Kumar",
-    role: "Founder, Chennai Startup",
-    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
-    rating: 5,
-    text: "We hired them for our company launch in Chennai. The photos and event highlights were delivered on time with excellent quality. Truly professional from start to finish."
-  },
-  {
-    name: "Nivetha Raj",
-    role: "Classical Dancer",
-    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
-    rating: 5,
-    text: "The team captured every performance with amazing clarity and creativity. The portraits and stage shots were beyond our expectations. We'll definitely work with them again."
-  }
-];
+  const testimonials = [
+    {
+      name: "Priya Krishnan",
+      role: "Bride, Chennai",
+      image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+      rating: 5,
+      text: "Our wedding memories were captured beautifully. Every photo reflects genuine emotions, and the team made us feel comfortable throughout the event. Highly recommended!"
+    },
+    {
+      name: "Arun Kumar",
+      role: "Founder, Chennai Startup",
+      image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+      rating: 5,
+      text: "We hired them for our company launch in Chennai. The photos and event highlights were delivered on time with excellent quality. Truly professional from start to finish."
+    },
+    {
+      name: "Nivetha Raj",
+      role: "Classical Dancer",
+      image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+      rating: 5,
+      text: "The team captured every performance with amazing clarity and creativity. The portraits and stage shots were beyond our expectations. We'll definitely work with them again."
+    }
+  ];
   const standardPlans = [
     {
       name: 'Silver',
@@ -438,13 +438,13 @@ const testimonials = [
             Premium luxury photography specializing in breathtaking weddings, editorial fashion, high-end commercial brands, and private event coverages.
           </p> */}
           <div className="flex gap-3 md:gap-6 justify-start">
-                        <a href="#portfolio" className="text-shadow-lg bg-[#facc15] text-black px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
-                            View Portfolio
-                          </a>
-                        <a href="#contact" className="text-shadow-lg/30 border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
-                            Book a Session
-                          </a>
-                      </div>
+            <a href="#portfolio" className="text-shadow-lg bg-[#facc15] text-black px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+              View Portfolio
+            </a>
+            <a href="#contact" className="text-shadow-lg/30 border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+              Book a Session
+            </a>
+          </div>
 
           {/* <div className="flex gap-6 justify-left flex-wrap">
             <a
@@ -567,25 +567,25 @@ const testimonials = [
           </div>
 
           <ResponsiveMasonry columnsCountBreakPoints={{
-  350: 1, //for phone
-  750: 2,  //for tab
-  1000: 3,  //for laptop
-}}>
-          <Masonry columnsCount={3} gutter="1.5rem" >
-            {filteredImages.map((image) => (
-              <div
-                    key={image.id}
-                    className="relative group cursor-pointer overflow-hidden rounded-2xl" >
-                    <ImageWithFallback
-                      src={image.url}
-                      alt={image.title}
-                      className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
-                    />
+            350: 1, //for phone
+            750: 2,  //for tab
+            1000: 3,  //for laptop
+          }}>
+            <Masonry columnsCount={3} gutter="1.5rem" >
+              {filteredImages.map((image) => (
+                <div
+                  key={image.id}
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl" >
+                  <ImageWithFallback
+                    src={image.url}
+                    alt={image.title}
+                    className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
+                  />
 
-                  </div>
-            ))}
-            
-          </Masonry>
+                </div>
+              ))}
+
+            </Masonry>
           </ResponsiveMasonry>
         </div>
       </section>
