@@ -35,29 +35,13 @@ function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; ligh
       {/* Stylized Thin Horizontal Connecting Line (as in reference image) */}
       <div className="h-[1px] w-6 md:w-8 bg-current opacity-30 self-end mb-2.5 mx-1" />
 
-      {/* Camera Icon with Smile Emoji Lens */}
-      <div className="flex items-center self-end mb-0.5 ml-1">
-        <svg className="w-11 h-8 md:w-13 md:h-9.5 fill-current" viewBox="0 0 100 70">
-          {/* Pro Camera Body Outline */}
-          <path d="M12 24h10l3.5-5.5h49l3.5 5.5h10a5 5 0 0 1 5 5v26a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5V29a5 5 0 0 1 5-5z" />
-          {/* Shutter Button */}
-          <rect x="76" y="20" width="8" height="4" rx="1" fill="#facc15" />
-          {/* Dial detail */}
-          <rect x="18" y="20" width="6" height="4" rx="1" fill="currentColor" opacity="0.6" />
-          {/* Outer Lens white ring */}
-          <circle cx="50" cy="40" r="19" className="fill-white stroke-current stroke-2" />
-          {/* Inner Lens black chamber */}
-          <circle cx="50" cy="40" r="15" className="fill-current" />
-          {/* Smiley emoji element inside the lens */}
-          <circle cx="50" cy="40" r="12.5" fill="#facc15" />
-          {/* Eyes */}
-          <circle cx="45.5" cy="36.5" r="1.5" fill="black" />
-          <circle cx="54.5" cy="36.5" r="1.5" fill="black" />
-          {/* Smiley Smile Mouth */}
-          <path d="M43 42c1.5 3 5.5 3 7 0" stroke="black" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-          {/* Highlight shine */}
-          <circle cx="55.5" cy="33.5" r="0.8" fill="white" opacity="0.8" />
-        </svg>
+      {/* Camera Icon with Smile Emoji Lens (Favicon Logo) */}
+      <div className="flex items-center self-center ml-1">
+        <img
+          src="/favicon.png"
+          alt="Smile Camera Logo"
+          className="w-10 h-10 md:w-12 md:h-12 object-contain"
+        />
       </div>
     </div>
   );
