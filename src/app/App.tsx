@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Camera, Award, Users, Star, Instagram, Facebook, Twitter, Mail, Phone, MapPin, Menu, X, PhoneCall } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
-import Masonry from 'react-responsive-masonry';
+import Masonry,  { ResponsiveMasonry } from 'react-responsive-masonry';
+import useWindowSize from './hooks/useWindowSize';
+const DomeGallery = lazy(() => import('./components/ui/DomeGallery/DomeGallery'));
+import SEO from './components/SEO';
 
 function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; lightBg?: boolean }) {
   const textColor = lightBg
@@ -49,17 +52,40 @@ function SmileLogo({ isScrolled, lightBg = false }: { isScrolled?: boolean; ligh
 
 export default function App() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', phone: "" });
   const [activePricingFilter, setActivePricingFilter] = useState('standard');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+const columns =
+  window.innerWidth >= 1024
+    ? 3
+    : window.innerWidth >= 768
+    ? 2
+    : 1;
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Fade‑in animation on scroll using IntersectionObserver
+  useEffect(() => {
+    const sections = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
   }, []);
 
   const services = [
@@ -86,83 +112,73 @@ export default function App() {
   ];
 
   const portfolioImages = [
-    { id: 5, url: '/photos/wedding/A1 (1).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography ', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (2).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (3).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (4).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (5).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (6).jpg', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (7).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (8).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (9).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (10).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (11).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (12).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (13).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (14).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (15).jpg', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (16).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (2).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (3).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (4).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (5).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (6).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (7).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (8).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (9).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (10).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (11).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (12).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (13).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (14).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (15).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (17).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (18).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (19).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (20).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (21).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (22).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (23).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 5, url: '/photos/wedding/A1 (24).webp', category: 'weddings', title: 'Timeless Beauty' },
-    { id: 3, url: '/photos/birthday/a1 (7).webp', category: 'birthday', title: 'Natural Grace' },
-    { id: 3, url: '/photos/birthday/a1 (6).webp', category: 'birthday', title: 'Natural Grace' },
-    { id: 3, url: '/photos/birthday/a1 (1).webp', category: 'birthday', title: 'Natural Grace' },
-    { id: 4, url: '/photos/birthday/a1 (8).webp', category: 'birthday', title: 'Bold Expression' },
-    { id: 6, url: '/photos/birthday/a1 (9).webp', category: 'birthday', title: 'Movement & Flow' },
-    { id: 9, url: '/photos/babyshower/s1 (1).webp', category: 'baby shower', title: 'Fire & Passion' },
-    { id: 9, url: '/photos/babyshower/s1 (2).webp', category: 'baby shower', title: 'Fire & Passion' },
-    { id: 9, url: '/photos/babyshower/s1 (4).webp', category: 'baby shower', title: 'Fire & Passion' },
-    { id: 9, url: '/photos/babyshower/s1 (5).webp', category: 'baby shower', title: 'Fire & Passion' },
-    { id: 9, url: '/photos/babyshower/s1 (6).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 5, url: '/optimized/wedding/A2 (1).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography ', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (2).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (3).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (4).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (5).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (6).webp', category: 'weddings', alt: 'Smile Photography Kancheepuram Wedding Photography', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (7).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (8).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (9).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (10).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (11).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (12).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (13).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (14).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (15).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A2 (16).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (7).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (12).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (13).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (14).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (15).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (17).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (18).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (19).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (20).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (21).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (22).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (23).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 5, url: '/optimized/wedding/A1 (24).webp', category: 'weddings', title: 'Timeless Beauty' },
+    { id: 3, url: '/optimized/birthday/a1 (7).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 3, url: '/optimized/birthday/a1 (6).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 3, url: '/optimized/birthday/a1 (1).webp', category: 'birthday', title: 'Natural Grace' },
+    { id: 4, url: '/optimized/birthday/a1 (8).webp', category: 'birthday', title: 'Bold Expression' },
+    { id: 6, url: '/optimized/birthday/a1 (9).webp', category: 'birthday', title: 'Movement & Flow' },
+    { id: 9, url: '/optimized/babyshower/s1 (1).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/optimized/babyshower/s1 (2).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/optimized/babyshower/s1 (4).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/optimized/babyshower/s1 (5).webp', category: 'baby shower', title: 'Fire & Passion' },
+    { id: 9, url: '/optimized/babyshower/s1 (6).webp', category: 'baby shower', title: 'Fire & Passion' },
 
-    
+
 
   ];
 
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Bride',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',
-      rating: 5,
-      text: 'Absolutely stunning work! They captured every moment of our wedding day with such artistry and emotion. We couldn\'t be happier.'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'CEO, TechCorp',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
-      rating: 5,
-      text: 'Professional, creative, and exceptional quality. Our corporate event photos exceeded all expectations.'
-    },
-    {
-      name: 'Emma Rodriguez',
-      role: 'Fashion Designer',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100',
-      rating: 5,
-      text: 'A true artist with the camera. Their fashion photography brought my collection to life in ways I never imagined.'
-    }
-  ];
-
+const testimonials = [
+  {
+    name: "Priya Krishnan",
+    role: "Bride, Chennai",
+    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+    rating: 5,
+    text: "Our wedding memories were captured beautifully. Every photo reflects genuine emotions, and the team made us feel comfortable throughout the event. Highly recommended!"
+  },
+  {
+    name: "Arun Kumar",
+    role: "Founder, Chennai Startup",
+    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+    rating: 5,
+    text: "We hired them for our company launch in Chennai. The photos and event highlights were delivered on time with excellent quality. Truly professional from start to finish."
+  },
+  {
+    name: "Nivetha Raj",
+    role: "Classical Dancer",
+    image: "https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+    rating: 5,
+    text: "The team captured every performance with amazing clarity and creativity. The portraits and stage shots were beyond our expectations. We'll definitely work with them again."
+  }
+];
   const standardPlans = [
     {
       name: 'Silver',
@@ -262,7 +278,7 @@ export default function App() {
     e.preventDefault();
     console.log('Form submitted:', formData);
     alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', email: '', message: '', phone: "" });
   };
 
   const handleChoosePlan = (planName: string, planPrice: string, isWedding: boolean) => {
@@ -274,14 +290,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-black">
+      <SEO />
       {/* Floating Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-            ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-gray-200/50 text-black'
-            : 'bg-transparent py-6 text-white'
+          ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-gray-200/50 text-black'
+          : 'bg-transparent py-6 text-white'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo Holder */}
           <a href="#" className="flex items-center group">
             <SmileLogo isScrolled={isScrolled} />
@@ -398,40 +415,58 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1769650795970-89690d0f535a?w=1920"
-            alt="Hero background"
-            className="w-full h-full object-cover"
+          <DomeGallery
+            fit={0.7}
+            minRadius={600}
+            maxVerticalRotationDeg={6}
+            segments={26}
+            dragDampening={2}
+            grayscale={false}
+            bg={"#ffffffff"}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+          {/* <div className="absolute inset-0  from-black/70 via-black/50 to-black"></div> */}
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white leading-none">
+
+        <div className="relative z-10 text-left px-6 md:px-25 pt-48 md:pt-0 w-full">
+          +       <h1 className="text-3xl sm:text-4xl md:text-8xl font-black mb-4 md:mb-6 tracking-tight text-white text-shadow-lg/30 leading-none">
+            {/* <div className="relative z-10 text-left px-25 w-full">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-white text-shadow-lg/30 leading-none"> */}
             Candid Emotion,<br />Timeless Elegance
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+          {/* <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl  font-light leading-relaxed text-shadow-lg/30">
             Premium luxury photography specializing in breathtaking weddings, editorial fashion, high-end commercial brands, and private event coverages.
-          </p>
-          <div className="flex gap-6 justify-center flex-wrap">
+          </p> */}
+          <div className="flex gap-3 md:gap-6 justify-start">
+                        <a href="#portfolio" className="text-shadow-lg bg-[#facc15] text-black px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+                            View Portfolio
+                          </a>
+                        <a href="#contact" className="text-shadow-lg/30 border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center text-xs sm:text-sm md:text-base whitespace-nowrap">
+                            Book a Session
+                          </a>
+                      </div>
+
+          {/* <div className="flex gap-6 justify-left flex-wrap">
             <a
               href="#portfolio"
-              className="bg-[#facc15] text-black px-8 py-4 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center"
+              className="text-shadow-lg bg-[#facc15] text-black px-8 py-4 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl font-bold flex items-center justify-center"
             >
               View Portfolio
             </a>
             <a
               href="#contact"
-              className="border-2 border-white text-white px-8 py-4 rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center"
+              className="text-shadow-lg/30 border-2 border-white text-white px-8 py-4 rounded-2xl hover:bg-[#facc15] hover:text-black hover:border-[#facc15] transition-all duration-300 font-bold flex items-center justify-center"
             >
               Book a Session
             </a>
-          </div>
+          </div> */}
+
+
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 bg-white text-black scroll-mt-20">
+      <section id="about" className="py-24 px-6 bg-white text-black scroll-mt-20 fade-in-section">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative">
@@ -475,7 +510,7 @@ export default function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 px-6 bg-white text-black scroll-mt-20">
+      <section id="services" className="py-24 px-6 bg-white text-black scroll-mt-20 fade-in-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold mb-4 text-black">Our Services</h2>
@@ -500,7 +535,7 @@ export default function App() {
       </section>
 
       {/* Portfolio Gallery */}
-      <section id="portfolio" className="py-24 px-6 bg-white text-black scroll-mt-20">
+      <section id="portfolio" className="py-24 px-6 bg-white text-black scroll-mt-20 fade-in-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold mb-4 text-black">Our Portfolio</h2>
@@ -508,7 +543,7 @@ export default function App() {
               Explore our latest work across different photography styles
             </p>
 
-            <div className="flex gap-4 justify-center flex-wrap">
+            <div className="flex gap-4 justify-center flex-wrap" >
               {['all', 'weddings', 'birthday', 'baby shower'].map((filter) => (
                 <button
                   key={filter}
@@ -521,8 +556,8 @@ export default function App() {
                     }
                   }}
                   className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${activeFilter === filter
-                      ? 'bg-[#facc15] text-black'
-                      : 'bg-black text-white hover:bg-neutral-800'
+                    ? 'bg-[#facc15] text-black'
+                    : 'bg-black text-white hover:bg-neutral-800'
                     }`}
                 >
                   {filter}
@@ -531,28 +566,32 @@ export default function App() {
             </div>
           </div>
 
-          <Masonry columnsCount={3} gutter="1.5rem">
+          <ResponsiveMasonry columnsCountBreakPoints={{
+  350: 1, //for phone
+  750: 2,  //for tab
+  1000: 3,  //for laptop
+}}>
+          <Masonry columnsCount={3} gutter="1.5rem" >
             {filteredImages.map((image) => (
               <div
-                key={image.id}
-                className="relative group cursor-pointer overflow-hidden rounded-2xl"
-              >
-                <ImageWithFallback
-                  src={image.url}
-                  alt={image.title}
-                  className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
-                />
-                <div >
-                  
-                </div>
-              </div>
+                    key={image.id}
+                    className="relative group cursor-pointer overflow-hidden rounded-2xl" >
+                    <ImageWithFallback
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
+                    />
+
+                  </div>
             ))}
+            
           </Masonry>
+          </ResponsiveMasonry>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 px-6 bg-white text-black">
+      <section className="py-24 px-6 bg-white text-black fade-in-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold mb-4 text-black">Client Testimonials</h2>
@@ -565,7 +604,7 @@ export default function App() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-neutral-50 p-8 rounded-3xl border border-gray-200 hover:border-[#facc15] transition-all duration-300"
+                className="flex flex-col justify-between bg-neutral-50 p-8 rounded-3xl border border-gray-200 hover:border-[#facc15] transition-all duration-300"
               >
                 <div className="flex gap-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -595,7 +634,7 @@ export default function App() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 px-6 bg-white text-black scroll-mt-20">
+      <section id="pricing" className="py-24 px-6 bg-white text-black scroll-mt-20 fade-in-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold mb-4 text-black">Pricing Packages</h2>
@@ -612,8 +651,8 @@ export default function App() {
                   key={category.id}
                   onClick={() => setActivePricingFilter(category.id)}
                   className={`px-6 py-3 rounded-xl capitalize transition-all duration-300 font-medium ${activePricingFilter === category.id
-                      ? 'bg-[#facc15] text-black shadow-sm'
-                      : 'bg-black text-white hover:bg-neutral-800'
+                    ? 'bg-[#facc15] text-black shadow-sm'
+                    : 'bg-black text-white hover:bg-neutral-800'
                     }`}
                 >
                   {category.label}
@@ -627,8 +666,8 @@ export default function App() {
               <div
                 key={index}
                 className={`relative p-8 rounded-3xl transition-all duration-300 flex flex-col ${plan.recommended
-                    ? 'bg-[#facc15] text-black scale-105 shadow-2xl border border-[#facc15]'
-                    : 'bg-neutral-50 border border-gray-200 text-black hover:border-black'
+                  ? 'bg-[#facc15] text-black scale-105 shadow-2xl border border-[#facc15]'
+                  : 'bg-neutral-50 border border-gray-200 text-black hover:border-black'
                   }`}
               >
                 {plan.recommended && (
@@ -666,7 +705,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 bg-white text-black scroll-mt-20">
+      <section id="contact" className="py-24 px-6 bg-white text-black scroll-mt-20 fade-in-section">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16">
             <div>
@@ -717,12 +756,12 @@ export default function App() {
                 <a href="tel:6379453688" className="bg-neutral-100 text-black p-4 rounded-xl hover:bg-[#facc15] hover:text-black transition-all duration-300">
                   <PhoneCall className="w-6 h-6" />
                 </a>
-                
+
               </div>
             </div>
 
             <div className="bg-neutral-50 p-8 rounded-3xl border border-gray-200">
-              <form action="https://formsubmit.co/smilephotography81@gmail.com" method="POST"className="space-y-6">
+              <form action="https://formsubmit.co/smilephotography81@gmail.com" method="POST" className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm mb-2 text-gray-600">
                     Your Name
@@ -795,13 +834,16 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-neutral-50 py-16 px-6 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-6 text-center">
+      <footer className="bg-neutral-50 py-16 px-6 flex justify-center gap-6 border-t border-gray-200">
+        <div className="max-w-7xl w-auto flex flex-col items-center justify-center gap-6 text-center">
           <SmileLogo lightBg={true} />
           <p className="text-gray-500 text-sm mt-2">&copy; 2026 Smile Photography Studio. All rights reserved.</p>
-          <p className="text-gray-500 text-sm mt-2">Created by Kanchipuram Web Solutions.</p>
-          <p className="text-gray-500 text-sm mt-2"> Email : [kanchipuramwebsolutions@gmail.com]</p>
 
+          <div>
+            <p className="text-gray-500 text-sm mt-2">Created by Kanchipuram Web Solutions.</p>
+            <p className="text-gray-500 text-sm mt-2"> Email : [kanchipuramwebsolutions@gmail.com]</p>
+
+          </div>
 
         </div>
       </footer>
@@ -815,7 +857,7 @@ export default function App() {
         aria-label="Chat on WhatsApp"
       >
         <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.023-5.102-2.884-6.964C16.587 1.91 14.139.887 11.53.887c-5.444 0-9.866 4.418-9.87 9.865-.001 1.77.464 3.506 1.346 5.045L1.93 21.03l5.378-1.411c.002-.001.002-.001.002-.001zM17.52 14.33c-.302-.15-1.786-.88-2.057-.98-.27-.1-.468-.15-.663.15-.195.3-.757.98-.928 1.18-.17.2-.34.22-.64.07-1.125-.56-1.923-1.024-2.69-2.337-.2-.34-.04-.52.11-.67.14-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.07-.15-.663-1.6-.909-2.193-.24-.58-.5-.5-.663-.51-.17-.01-.366-.01-.561-.01-.195 0-.51.07-.777.36-.266.29-1.02.99-1.02 2.42 0 1.43 1.04 2.81 1.185 3 0 .19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.7.22 1.33.19 1.83.12.56-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.13-.27-.21-.57-.36z"/>
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.023-5.102-2.884-6.964C16.587 1.91 14.139.887 11.53.887c-5.444 0-9.866 4.418-9.87 9.865-.001 1.77.464 3.506 1.346 5.045L1.93 21.03l5.378-1.411c.002-.001.002-.001.002-.001zM17.52 14.33c-.302-.15-1.786-.88-2.057-.98-.27-.1-.468-.15-.663.15-.195.3-.757.98-.928 1.18-.17.2-.34.22-.64.07-1.125-.56-1.923-1.024-2.69-2.337-.2-.34-.04-.52.11-.67.14-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.07-.15-.663-1.6-.909-2.193-.24-.58-.5-.5-.663-.51-.17-.01-.366-.01-.561-.01-.195 0-.51.07-.777.36-.266.29-1.02.99-1.02 2.42 0 1.43 1.04 2.81 1.185 3 0 .19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.7.22 1.33.19 1.83.12.56-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.13-.27-.21-.57-.36z" />
         </svg>
         <span className="absolute right-16 bg-white text-black text-xs font-bold px-3 py-2 rounded-xl shadow-lg border border-gray-200 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           Message us on WhatsApp
